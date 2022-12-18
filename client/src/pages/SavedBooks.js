@@ -11,7 +11,7 @@ import { QUERY_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 
 const SavedBooks = () => {
-	const { loading, data} = useQuery(QUERY_ME);
+	const { loading, data } = useQuery(QUERY_ME);
 	const [removeBook] = useMutation(REMOVE_BOOK);
 
 	const userData = data?.me || {};
@@ -24,27 +24,32 @@ const SavedBooks = () => {
 		return <div>You must be logged in to view saved books!</div>
 	}
 
-	const handleDeleteBook = async (bookId) => {
+	const handleDeleteBook = async ({ bookId }, res) => {
 		const token = AuthService.loggedIn() ? AuthService.getToken() : null;
 
 		if (!token) {
 			return false;
 		}
+		console.log(bookId)
 
 		try {
+			console.log(bookId)
 			// Remove book from user info
-			const data = await removeBook({ variables: { bookId }});
+			const { data } = await removeBook({
+				variables: { ...bookId} 
+			});
 			// Removes book from localstorage upon success of removal from user info
 
 			console.log(data);
-
 			removeBookId(bookId);
+
+			return res.json(data)
 		} catch (err) {
 			console.error(err);
 		}	
 	};
 
-	console.log(userData);
+	// console.log(userData);
 
 	return (
 		<>
