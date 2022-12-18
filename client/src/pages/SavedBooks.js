@@ -36,7 +36,7 @@ const SavedBooks = () => {
 			console.log(bookId)
 			// Remove book from user info
 			const { data } = await removeBook({
-				variables: { ...bookId} 
+				variables: { bookId } 
 			});
 			// Removes book from localstorage upon success of removal from user info
 
@@ -73,7 +73,7 @@ const SavedBooks = () => {
 								<Card.Title>{book.title}</Card.Title>
 								<p className='small'>Authors: {book.authors}</p>
 								<Card.Text>{book.description}</Card.Text>
-								<Button className='btn-block btn-danger' onClick={() => handleDeleteBook(book.bookId)}>
+								<Button className='btn-block btn-danger' onClick={() => handleDeleteBook(book)}>
 									Delete this Book!
 								</Button>
 							</Card.Body>
