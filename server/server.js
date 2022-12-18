@@ -32,7 +32,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
 
 	// Catch-all wild card route for locations not explicitly defined
 	app.get('*', (req, res) => {
-		res.sendFile(pathj.join(__dirname, '../cleint/build/index.html'));
+		res.sendFile(pathj.join(__dirname, '../client/build/index.html'));
 	});
 
 	db.once('open', () => {

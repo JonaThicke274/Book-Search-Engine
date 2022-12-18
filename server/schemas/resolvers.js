@@ -46,7 +46,7 @@ const resolvers = {
                 return userSavedBook;
             }
         },
-        deleteBook: async (parent, args, context) => {
+        removeBook: async (parent, args, context) => {
             if (context.user) {
                 const userDeletedBook = await User.findByIdAndUpdate(
                     { _id: context.user._id },
