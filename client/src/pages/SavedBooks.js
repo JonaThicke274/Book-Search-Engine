@@ -33,8 +33,11 @@ const SavedBooks = () => {
 
 		try {
 			// Remove book from user info
-			await removeBook({ variables: { bookId }});
+			const data = await removeBook({ variables: { bookId }});
 			// Removes book from localstorage upon success of removal from user info
+
+			console.log(data);
+
 			removeBookId(bookId);
 		} catch (err) {
 			console.error(err);
