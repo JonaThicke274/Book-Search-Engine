@@ -11,6 +11,8 @@ const resolvers = {
                     .populate('savedBooks')
                 return userData;
             }
+
+            throw new AuthenticationError('Not logged in');
         }
     },
     Mutation: {

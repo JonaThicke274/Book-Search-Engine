@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const db = require('./config/connection');
-const routes = require('./routes');
 // Import Apollo Server, Import typeDefs and resolvers
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas');
@@ -13,7 +12,8 @@ const { authMiddleware } = require('./utils/auth');
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	context: authMiddleware
+	context: authMiddleware,
+	introspection: true,
 });
 
 app.use(express.urlencoded({ extended: true }));
@@ -32,7 +32,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
 
 	// Catch-all wild card route for locations not explicitly defined
 	app.get('*', (req, res) => {
-		res.sendFile(pathj.join(__dirname, '../client/build/index.html'));
+		res.sendFile(path.join(__dirname, '../client/build/index.html'));
 	});
 
 	db.once('open', () => {
