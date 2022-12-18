@@ -17,7 +17,7 @@ This application's purpose is to allow a user to search a book by its author(s),
 * ES6
 
 ## Instructions to Use:
-* Navigate to [application]()!
+* Navigate to [application](https://jonathicke-booksearch.herokuapp.com/)!
 * Sign up or log in if you've already signed up by clicking on the button on the top right that's labeled "Log In/Sign Up"
 * Search Books and save them for later!
 * Navigate to your "Saved Books" by clicking on the corresponding button on the top right
@@ -25,7 +25,7 @@ This application's purpose is to allow a user to search a book by its author(s),
 
 ## Link to Deployed Application
 
-[Link to application!]()
+[Link to application!](https://jonathicke-booksearch.herokuapp.com/)
 
 ## Contributions/Credits
 Made by Jonathan Lipata Arevalo
